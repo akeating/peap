@@ -1,0 +1,29 @@
+.dashboard {
+  display: flex;
+  align-items: center;
+  h1 {
+    margin: 0;
+  }
+  .controls {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+}
+.main-content {
+  display: flex;
+  justify-content: center;
+  .increment-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .btn {
+      font-size: 30px;
+    }
+    .current-count {
+      font-size: 80px;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+login-form-component {
+  display: block;
+  width: 400px;
+  margin: 40px auto 0 auto;
+
+  .hidden {
+    opacity: 0;
+  }
+}
