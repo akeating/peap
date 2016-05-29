@@ -3,7 +3,7 @@ defmodule PeapDemo.UserTest do
 
   alias PeapDemo.User
 
-  @valid_attrs %{email: "some content", name: "some content"}
+  @valid_attrs %{email: "some content", name: "some content", password_hash: "whatever"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

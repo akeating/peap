@@ -32,6 +32,10 @@ defmodule PeapDemo.ConnCase do
     end
   end
 
+  setup_all do
+    {:ok, conn: Phoenix.ConnTest.conn()}
+  end
+
   setup tags do
     unless tags[:async] do
       Ecto.Adapters.SQL.restart_test_transaction(PeapDemo.Repo, [])

@@ -15,7 +15,7 @@ defmodule PeapDemo.Data do
               name: "User",
               description: "A User",
               fields: %{
-                id: %{type: %GraphQL.Type.ID{}},
+                id: %{type: %GraphQL.Type.Int{}},
                 name: %{type: %GraphQL.Type.String{}},
                 email: %{type: %GraphQL.Type.String{}}
               }
