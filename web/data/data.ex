@@ -1,6 +1,7 @@
 defmodule PeapDemo.Data do
 
   alias PeapDemo.Data.Api
+  alias PeapDemo.User
 
   def schema do
     %GraphQL.Schema{
@@ -42,20 +43,21 @@ defmodule PeapDemo.Data do
     }
   end
 
-  def root_value_from_conn(conn) do
-    root_value_from_user(Guardian.Plug.current_resource(conn))
+  def root_value(conn = %Plug.Conn{}) do
+    user = Guardian.Plug.current_resource(conn)
+    root_value(user)
   end
 
-  def root_value_from_user(user) do
+  def root_value(user = %User{}) do
     %{ user: user }
   end
 
-  def executeForConn(conn, query) do
-    execute(query, root_value_from_conn(conn))
+  def execute(query, conn = %Plug.Conn{}) do
+    execute(query, root_value(conn))
   end
 
-  def executeForUser(query, user) do
-    execute(query, root_value_from_user(user))
+  def execute(query, user = %User{}) do
+    execute(query, root_value(user))
   end
 
   def execute(query, root_value) do

@@ -5,7 +5,7 @@ defmodule PeapDemo.SecureApiController do
 
   def whoami(conn, _params) do
     query = "{whoami { id, name, email }}"
-    { :ok, result } = Data.executeForConn(conn, query)
+    { :ok, result } = Data.execute(query, conn)
     json conn, result
   end
 end

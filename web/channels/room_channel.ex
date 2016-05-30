@@ -15,7 +15,7 @@ defmodule PeapDemo.RoomChannel do
 
   def handle_in("graphql", %{"body" => %{"query" => query }}, socket) do
     user = Repo.get(User, socket.assigns.user_id)
-    { :ok, result } = Data.executeForUser(query, user)
+    { :ok, result } = Data.execute(query, user)
     { :reply, { :ok, %{ body: result }}, socket }
   end
 

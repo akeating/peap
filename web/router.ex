@@ -34,7 +34,7 @@ defmodule PeapDemo.Router do
 
     forward "/graphql", GraphQL.Plug.Endpoint,
       schema: {PeapDemo.Data, :schema},
-      root_value: {PeapDemo.Data, :root_value_from_conn}
+      root_value: {PeapDemo.Data, :root_value}
   end
 
   scope "/", PeapDemo do
