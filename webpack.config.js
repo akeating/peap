@@ -1,4 +1,5 @@
 const path = require('path');
+const globby = require('globby');
 const root = __dirname;
 const depsPath = path.join(root, 'deps');
 const nodeModulesPath = path.join(root, 'node_modules');
@@ -8,11 +9,15 @@ const commonPath = path.resolve('web', 'static', 'modules', 'common');
 const commonEntryFile = path.join(commonPath, 'common.ts');
 const mainPath = path.resolve('web', 'static', 'modules', 'main');
 const mainEntryFile = path.join(mainPath, 'main.ts');
+const testPath = path.resolve('web', 'static', 'modules');
+const testEntryGlob = path.join(testPath, '**/*.spec.ts');
+const testPathList = globby.sync(testEntryGlob);
 
 module.exports = {
   entry: {
     common: commonEntryFile,
-    main: mainEntryFile
+    main: mainEntryFile,
+    test: testPathList
   },
   output: {
     path: buildPath,
@@ -26,7 +31,7 @@ module.exports = {
       { test: /\.css$/, loaders: ['style', 'css', 'resolve-url'] },
       { test: /\.scss$/, loaders: ['style', 'css', 'resolve-url', 'sass'], exclude: [mainPath] },
       { test: /\.scss$/, loaders: ['raw', 'resolve-url', 'sass'], include: [mainPath] },
-      { test: /\.js$/, loader: 'babel', exclude: [nodeModulesPath] },
+      // { test: /\.js$/, loader: 'babel', exclude: [nodeModulesPath] },
       { test: /\.ts$/, loader: 'awesome-typescript-loader' }
     ]
   },

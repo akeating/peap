@@ -9,6 +9,7 @@ import { LocalStorage } from './localstorage.service';
 
 @Injectable()
 export class ApiService {
+  name: string = 'ApiService';
   token: string = null;
   user: User;
 
