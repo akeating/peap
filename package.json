@@ -6,7 +6,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-client-unit": "karma start --single-run",
+    "test-server": "mix test",
+    "test": "npm run test-server && npm run test-client-unit",
     "clean": "rm -rf priv/static/*",
     "copy": "cp web/static/root/* priv/static",
     "copy-watch": "node_modules/.bin/cpx \"web/static/root/*\" priv/static --watch",
