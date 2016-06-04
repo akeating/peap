@@ -8,9 +8,9 @@
   "scripts": {
     "test-client-unit": "karma start --single-run",
     "test-server": "mix test",
-    "test": "npm run test-server && npm run test-client-unit",
-    "pree2e": "node_modules/.bin/webdriver-manager update",
-    "e2e": "npm run pree2e && node_modules/.bin/protractor",
+    "test-pree2e": "node_modules/.bin/webdriver-manager update",
+    "test-e2e": "npm run test-pree2e && node_modules/.bin/protractor",
+    "test": "npm run test-server && npm run test-client-unit && npm run test-e2e",
     "clean": "rm -rf priv/static/*",
     "copy": "cp web/static/root/* priv/static",
     "copy-watch": "node_modules/.bin/cpx \"web/static/root/*\" priv/static --watch",
