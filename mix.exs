@@ -37,7 +37,8 @@ defmodule PeapDemo.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:guardian, "~> 0.10.0"},
+     {:joken, "~> 1.2.1"},
+     {:guardian, "~> 0.12.0"},
      {:comeonin, "~> 2.4"},
      {:plug_graphql, "~> 0.2"}]
   end
