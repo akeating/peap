@@ -24,6 +24,9 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Review the configs in `/config`, including `secret_key_base` in `config.exs`.
 
+Run the tests
+`npm test`
+
 Features
 --------
 

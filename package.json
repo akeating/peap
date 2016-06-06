@@ -10,7 +10,7 @@
     "test-server": "mix test",
     "test-pree2e": "node_modules/.bin/webdriver-manager update",
     "test-e2e": "npm run test-pree2e && node_modules/.bin/protractor",
-    "test": "npm run test-server && npm run test-client-unit && npm run test-e2e",
+    "test": "bin/run_all_tests.sh",
     "clean": "rm -rf priv/static/*",
     "copy": "cp web/static/root/* priv/static",
     "copy-watch": "node_modules/.bin/cpx \"web/static/root/*\" priv/static --watch",
