@@ -1,5 +1,5 @@
 exports.config = {
-  baseUrl: 'http://localhost:4000/',
+  baseUrl: 'http://localhost:4002/',
 
   specs: [
     './priv/static/bundles/test-e2e.js'

@@ -5,7 +5,8 @@
 /*.ez
 /priv/static
 /node_modules
-npm-debug.log
+/npm-debug.log
+/rel
 
 # Generate on crash by the VM
 erl_crash.dump
