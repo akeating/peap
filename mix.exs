@@ -24,6 +24,7 @@ defmodule PeapDemo.Mixfile do
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
+  defp elixirc_paths(:teste2e), do: ["lib", "web", "test/support"]
   defp elixirc_paths(_),     do: ["lib", "web"]
 
   # Specifies your project dependencies.
@@ -40,7 +41,8 @@ defmodule PeapDemo.Mixfile do
      {:joken, "~> 1.2.1"},
      {:guardian, "~> 0.12.0"},
      {:comeonin, "~> 2.4"},
-     {:plug_graphql, "~> 0.2"}]
+     {:plug_graphql, "~> 0.2"},
+     {:exrm, "~> 1.0"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
