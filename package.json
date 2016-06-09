@@ -16,6 +16,7 @@
     "copy-watch": "node_modules/.bin/cpx \"web/static/root/*\" priv/static --watch",
     "webpack": "node_modules/.bin/webpack",
     "webpack-watch": "node_modules/.bin/webpack --watch-stdin --progress --colors",
+    "webpack-test": "node_modules/.bin/webpack --config webpack-test.config.js",
     "build": "npm run clean && npm run copy && npm run webpack",
     "build-min": "npm run clean && npm run copy && npm run webpack --optimize-minimize",
     "typings": "typings",

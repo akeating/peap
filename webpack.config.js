@@ -1,5 +1,4 @@
 const path = require('path');
-const globby = require('globby');
 const root = __dirname;
 const depsPath = path.join(root, 'deps');
 const nodeModulesPath = path.join(root, 'node_modules');
@@ -9,18 +8,11 @@ const commonPath = path.resolve('web', 'static', 'modules', 'common');
 const commonEntryFile = path.join(commonPath, 'common.ts');
 const mainPath = path.resolve('web', 'static', 'modules', 'main');
 const mainEntryFile = path.join(mainPath, 'main.ts');
-const testPath = path.resolve('web', 'static', 'modules');
-const testEntryGlob = path.join(testPath, '**/*.spec.ts');
-const testPathList = globby.sync(testEntryGlob);
-const testE2EEntryGlob = path.join(testPath, '**/*.e2e.ts');
-const testE2EPathList = globby.sync(testE2EEntryGlob);
 
 module.exports = {
   entry: {
     common: commonEntryFile,
-    main: mainEntryFile,
-    test: testPathList,
-    'test-e2e': testE2EPathList
+    main: mainEntryFile
   },
   output: {
     path: buildPath,

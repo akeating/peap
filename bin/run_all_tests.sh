@@ -4,6 +4,7 @@ function server_pid {
 }
 
 set -e
+npm run webpack-test
 npm run test-server
 npm run test-client-unit
 
