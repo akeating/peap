@@ -11,10 +11,10 @@ import { ApiService } from '../../../support/services';
       <div class="form-group">
         <input type="email" class="form-control" placeholder="Email" required
           [(ngModel)]="model.email"
-          ngControl="email">
+          ngControl="email" name="email">
         <input type="password" class="form-control" placeholder="Password" required
           [(ngModel)]="model.password"
-          ngControl="password">
+          ngControl="password" name="password">
       </div>
       <button type="submit" class="btn btn-default"
         [disabled]="!loginForm.form.valid">Submit</button>

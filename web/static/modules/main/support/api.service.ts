@@ -30,7 +30,7 @@ export class ApiService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let body = { email, password };
-    return this.postWithHeaders('/api/token', body, headers).map((res) => {
+    return this.postWithHeaders('/api/token', body, headers).map(res => {
         this.token = res.token;
         this.localStorageService.set('token', this.token);
       })

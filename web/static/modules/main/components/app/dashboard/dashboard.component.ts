@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router-deprecated';
+import { Router } from '@angular/router';
 import { User } from '../../../models/user';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { ApiService, DataService, SocketService } from '../../../support/services';
@@ -42,7 +42,7 @@ export class DashboardComponent {
         if (status === true) {
           this.setupComponent();
         } else {
-          let currentUrl = this.router.root.currentInstruction.toRootUrl();
+          let currentUrl = this.router.url;
           let returnUrl = encodeURIComponent(currentUrl);
           this.router.navigateByUrl(`/login?returnUrl=${returnUrl}`);
         }
@@ -66,7 +66,7 @@ export class DashboardComponent {
 
   logout() {
     this.apiService.logout();
-    this.router.navigate(['Login']);
+    this.router.navigateByUrl('login');
   }
 
   incrementBy(by: number) {

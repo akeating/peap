@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <base href="/">
+    <base href=".">
     <title>Hello PeapDemo!</title>
     <script src="<%= static_path(@conn, "/bundles/common.js") %>"></script>
   </head>
