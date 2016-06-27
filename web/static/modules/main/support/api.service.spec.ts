@@ -6,12 +6,12 @@ require('rxjs');
 import { describe, expect, it, inject, beforeEachProviders } from '@angular/core/testing';
 
 import { HTTP_PROVIDERS } from '@angular/http';
-import { SERVICE_PROVIDERS, ApiService } from './services';
+import { APP_SERVICE_PROVIDERS, ApiService } from './services';
 
 describe('api.service', () => {
   beforeEachProviders(() => [
     ...HTTP_PROVIDERS,
-    ...SERVICE_PROVIDERS
+    ...APP_SERVICE_PROVIDERS
   ]);
   it('should logout()', inject([ApiService], (apiService) => {
     expect(apiService.name).toEqual('ApiService');

@@ -6,7 +6,7 @@
     "test": "test"
   },
   "scripts": {
-    "test-client-unit": "node_modules/.bin/karma start --single-run",
+    "test-client-unit": "BLUEBIRD_WARNINGS=0 node_modules/.bin/karma start --single-run",
     "test-server": "mix test",
     "test-pree2e": "node_modules/protractor/bin/webdriver-manager update",
     "test-e2e": "npm run test-pree2e && node_modules/.bin/protractor",
