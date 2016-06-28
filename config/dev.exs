@@ -12,9 +12,9 @@ config :peap_demo, PeapDemo.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    npm: ["run", "clean"],
-    npm: ["run", "copy-watch"],
-    npm: ["run", "webpack-watch"]
+    npm: ["run", "clean", cd: Path.expand("../", __DIR__)],
+    npm: ["run", "copy-watch", cd: Path.expand("../", __DIR__)],
+    npm: ["run", "webpack-watch", cd: Path.expand("../", __DIR__)]
   ]
 
 # Watch static and templates for browser reloading.

@@ -32,8 +32,10 @@ defmodule PeapDemo.ChannelCase do
   end
 
   setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(PeapDemo.Repo)
+
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(PeapDemo.Repo, [])
+      Ecto.Adapters.SQL.Sandbox.mode(PeapDemo.Repo, {:shared, self()})
     end
 
     :ok
