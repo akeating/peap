@@ -6,10 +6,9 @@
     "test": "test"
   },
   "scripts": {
-    "test-client-unit": "BLUEBIRD_WARNINGS=0 node_modules/.bin/karma start --single-run",
+    "test-client-unit": "bin/run_client_unit_tests.sh",
     "test-server": "mix test",
-    "test-pree2e": "node_modules/protractor/bin/webdriver-manager update",
-    "test-e2e": "npm run test-pree2e && node_modules/.bin/protractor",
+    "test-e2e": "bin/run_e2e_tests.sh",
     "test": "bin/run_all_tests.sh",
     "clean": "rm -rf priv/static/*",
     "copy": "cp web/static/root/* priv/static",
@@ -17,8 +16,6 @@
     "webpack": "node_modules/.bin/webpack",
     "webpack-watch": "node_modules/.bin/webpack --watch-stdin --progress --colors",
     "webpack-test": "node_modules/.bin/webpack --config webpack-test.config.js",
-    "build": "npm run clean && npm run copy && npm run webpack",
-    "build-min": "npm run clean && npm run copy && npm run webpack --optimize-minimize",
     "typings": "typings",
     "postinstall": "typings install"
   },

@@ -18,4 +18,4 @@ config :peap_demo, PeapDemo.Repo,
   password: "postgres",
   database: "peap_demo_test_e2e",
   hostname: "localhost",
-  pool_size: 10
+  pool: Ecto.Adapters.SQL.Sandbox
