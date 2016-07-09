@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DataService } from '../../support/services';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
@@ -14,7 +13,6 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private dataService: DataService) {
-  }
+  constructor() {}
 
 }

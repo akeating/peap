@@ -6,7 +6,7 @@ import { TokenGuard, AuthGuard } from '../../support/guards';
 export const routes: RouterConfig = [
   { path: 'login', component: LoginComponent, canActivate: [TokenGuard]  },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/login' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 export const APP_ROUTER_PROVIDERS = [
