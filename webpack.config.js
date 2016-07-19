@@ -22,11 +22,9 @@ module.exports = {
   module: {
     loaders: [
       { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' },
-      { test: /\.less$/, loaders: ['style', 'css', 'resolve-url', 'less'] },
       { test: /\.css$/, loaders: ['style', 'css', 'resolve-url'] },
-      { test: /\.scss$/, loaders: ['style', 'css', 'resolve-url', 'sass'], exclude: [mainPath] },
+      { test: /\.scss$/, loaders: ['style', 'css', 'resolve-url', 'sass?sourceMap'], exclude: [mainPath] },
       { test: /\.scss$/, loaders: ['css-to-string', 'css', 'resolve-url', 'sass?sourceMap'], include: [mainPath] },
-      // { test: /\.js$/, loader: 'babel', exclude: [nodeModulesPath] },
       { test: /\.ts$/, loader: 'awesome-typescript-loader' }
     ]
   },
