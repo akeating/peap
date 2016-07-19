@@ -25,7 +25,7 @@ module.exports = {
       { test: /\.less$/, loaders: ['style', 'css', 'resolve-url', 'less'] },
       { test: /\.css$/, loaders: ['style', 'css', 'resolve-url'] },
       { test: /\.scss$/, loaders: ['style', 'css', 'resolve-url', 'sass'], exclude: [mainPath] },
-      { test: /\.scss$/, loaders: ['raw', 'resolve-url', 'sass'], include: [mainPath] },
+      { test: /\.scss$/, loaders: ['css-to-string', 'css', 'resolve-url', 'sass?sourceMap'], include: [mainPath] },
       // { test: /\.js$/, loader: 'babel', exclude: [nodeModulesPath] },
       { test: /\.ts$/, loader: 'awesome-typescript-loader' }
     ]
