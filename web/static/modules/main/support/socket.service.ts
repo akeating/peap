@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-let { Socket } = require('phoenix'); // no typing available
+import { Socket, Channel } from 'phoenix';
 import { DataService } from './data.service';
 
 @Injectable()
 export class SocketService {
-  private socket: any;
-  private channel: any;
+  private socket: Socket;
+  private channel: Channel;
 
   constructor(private dataService: DataService) {}
 
   connect(token: string): Observable<any> {
     return Observable.create(observer => {
       this.socket = new Socket('/socket', { params: { token: token }});
-      this.socket.onOpen(resp => {
-        observer.next(resp);
+      this.socket.onOpen(() => {
+        observer.next();
       });
-      this.socket.onError(err => {
+      this.socket.onError((err: Error) => {
         this.socket.disconnect();
         return observer.error(err);
       });
@@ -27,7 +27,7 @@ export class SocketService {
 
   joinChannel(channelName): Observable<any> {
     this.channel = this.socket.channel(channelName, {});
-    let channel = this.channel;
+    let channel: Channel = this.channel;
     let dataService = this.dataService;
     return Observable.create(function (observer) {
       channel.on('new_message', payload => {
