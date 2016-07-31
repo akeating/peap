@@ -8,6 +8,9 @@
 /npm-debug.log
 /rel
 
+# Once phoenix.d.ts becomes part of the upstream, I'll ignore this.
+# /typings
+
 # Generate on crash by the VM
 erl_crash.dump
 

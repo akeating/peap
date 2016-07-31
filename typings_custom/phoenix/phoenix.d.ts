@@ -37,7 +37,6 @@ declare namespace phoenix {
     receive(status: string, callback: <Object>(response?) => void): Push;
   }
 
-  export var Channel: Channel;
   export var Socket: Socket;
 }
 
