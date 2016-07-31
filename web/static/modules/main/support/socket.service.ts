@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Socket, Channel } from 'phoenix';
+import { Socket, SocketOptions, Channel } from 'phoenix';
 import { DataService } from './data.service';
 
 @Injectable()
@@ -12,7 +12,8 @@ export class SocketService {
 
   connect(token: string): Observable<any> {
     return Observable.create(observer => {
-      this.socket = new Socket('/socket', { params: { token: token }});
+      const options: SocketOptions = { params: { token: token }};
+      this.socket = new Socket('/socket', options);
       this.socket.onOpen(() => {
         observer.next();
       });

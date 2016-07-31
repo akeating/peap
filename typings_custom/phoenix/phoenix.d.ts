@@ -38,6 +38,7 @@ declare namespace phoenix {
   }
 
   export var Socket: Socket;
+  export var SocketOptions: SocketOptions;
 }
 
 declare module 'phoenix' {
