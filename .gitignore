@@ -5,8 +5,9 @@
 /*.ez
 /priv/static
 /node_modules
-/npm-debug.log
+/npm-debug.log*
 /rel
+typings
 
 # Once phoenix.d.ts becomes part of the upstream, I'll ignore this.
 # /typings

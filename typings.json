@@ -1,6 +1,8 @@
 {
   "name": "peap_demo",
-  "dependencies": {},
+  "dependencies": {
+    "phoenix": "github:akeating/typed-phoenix#21741fece680122275172c87d22d6cff84a5f188"
+  },
   "globalDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
     "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
