@@ -7,9 +7,6 @@ import { ApiService, DataService, SocketService } from '../../../support/service
 @Component({
   selector: 'dashboard-component',
   styles: [ require('./dashboard.component.scss') ],
-  providers: [],
-  directives: [],
-  pipes: [],
   template: `
     <div class="dashboard page-header">
       <div class="controls">

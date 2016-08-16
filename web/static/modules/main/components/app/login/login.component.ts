@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoginFormComponent } from './login.form.component';
 
 @Component({
   selector: 'login-component',
   styles: [ require('./login.component.scss') ],
-  providers: [],
-  directives: [ LoginFormComponent ],
-  pipes: [],
   template: `
     <div class="page-header"></div>
     <login-form-component (onSuccess)="onSuccessFullLogin()"></login-form-component>

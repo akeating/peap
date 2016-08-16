@@ -22,7 +22,6 @@ import { ApiService } from '../../../support/services';
   </div>
   <div class="message">{{message}}</div>
   `,
-  providers: []
 })
 export class LoginFormComponent {
   @Output() onSuccess = new EventEmitter();
