@@ -1,7 +1,7 @@
 {
   "name": "peap_demo",
   "dependencies": {
-    "phoenix": "github:akeating/typed-phoenix#21741fece680122275172c87d22d6cff84a5f188"
+    "phoenix": "file:../typed-phoenix/typings.json"
   },
   "globalDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
