@@ -43,7 +43,7 @@ defmodule PeapDemo.Mixfile do
      {:guardian, "~> 0.12.0"},
      {:comeonin, "~> 2.4"},
      {:plug_graphql, "~> 0.2"},
-     {:exrm, "~> 1.0"}]
+     {:exrm, "~> 1.0.8"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
