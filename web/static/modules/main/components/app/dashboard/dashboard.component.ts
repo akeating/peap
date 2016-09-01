@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../../../models/user';
-import { window } from '@angular/platform-browser/src/facade/browser';
 import { ApiService, DataService, SocketService } from '../../../support/services';
 
 @Component({
@@ -52,7 +51,7 @@ export class DashboardComponent {
     this.userName = user.name;
     this.userEmail = user.email;
     this.dataService.alertMessage$.subscribe(message => {
-      window.alert(message);
+      (<any>window).alert(message);
     });
 
     this.dataService.currentCount$.subscribe(count => {

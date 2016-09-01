@@ -1,11 +1,17 @@
-require('es6-shim');
-require('zone.js/dist/zone');
 require('reflect-metadata');
 require('rxjs');
+require('es6-shim');
+require('zone.js/dist/zone');
+require('zone.js/dist/long-stack-trace-zone');
+require('zone.js/dist/proxy');
+require('zone.js/dist/sync-test');
+require('zone.js/dist/jasmine-patch');
+require('zone.js/dist/async-test');
+require('zone.js/dist/fake-async-test');
 
 import {TestBed, inject} from '@angular/core/testing';
 import {BrowserDynamicTestingModule, platformBrowserDynamicTesting} from '@angular/platform-browser-dynamic/testing';
-import { HTTP_PROVIDERS } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { APP_SERVICE_PROVIDERS, ApiService } from './services';
 
 TestBed.initTestEnvironment(
@@ -18,8 +24,10 @@ describe('api.service', () => {
     TestBed.configureTestingModule({
       declarations: [],
       providers: [
-        ...HTTP_PROVIDERS,
-        ...APP_SERVICE_PROVIDERS
+        APP_SERVICE_PROVIDERS
+      ],
+      imports: [
+        HttpModule
       ]
     });
   });

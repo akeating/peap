@@ -1,4 +1,4 @@
-import { provide, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LocalStorage {
@@ -33,5 +33,5 @@ export class LocalStorage {
 }
 
 export const LOCAL_STORAGE_PROVIDERS: any[] = [
-  provide(LocalStorage, {useClass: LocalStorage})
+  { provide: LocalStorage, useClass: LocalStorage }
 ];
