@@ -17,7 +17,8 @@
     "webpack-watch": "node_modules/.bin/webpack --watch-stdin --progress --colors",
     "webpack-test": "node_modules/.bin/webpack --config webpack-test.config.js",
     "typings": "typings",
-    "postinstall": "typings install"
+    "postinstall": "typings install",
+    "start": "mix phoenix.server"
   },
   "author": "Adam Keating",
   "license": "MIT",
