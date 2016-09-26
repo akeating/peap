@@ -39,8 +39,8 @@ defmodule PeapDemo.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:joken, "~> 1.2.1"},
-     {:guardian, "~> 0.12.0"},
+     {:joken, "~> 1.3"},
+     {:guardian, "~> 0.13.0"},
      {:comeonin, "~> 2.4"},
      {:plug_graphql, "~> 0.2"},
      {:exrm, "~> 1.0.8"}]
