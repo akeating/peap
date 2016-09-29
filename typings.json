@@ -4,8 +4,6 @@
     "phoenix": "registry:npm/phoenix#1.2.0+20160823012234"
   },
   "globalDependencies": {
-    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
-    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
-    "require": "registry:dt/require#2.1.20+20160316155526"
+    "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504"
   }
 }

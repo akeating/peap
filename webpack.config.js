@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const root = __dirname;
 const depsPath = path.join(root, 'deps');
 const nodeModulesPath = path.join(root, 'node_modules');
@@ -29,10 +30,13 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.ts', '.js'],
-    root: [nodeModulesPath],
+    extensions: ['.ts', '.js'],
     alias: {}
   },
-  plugins: [],
-  noParse: []
+
+  // https://github.com/AngularClass/angular2-webpack-starter/issues/993
+  plugins: [new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      __dirname
+    )]
 };
