@@ -1,6 +1,6 @@
 const path = require('path');
 const globby = require('globby');
-const testPath = path.resolve('web', 'static', 'modules');
+const testPath = path.resolve('web', 'modules');
 const testEntryGlob = path.join(testPath, '**/*.spec.ts');
 const testPathList = globby.sync(testEntryGlob);
 

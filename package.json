@@ -1,0 +1,17 @@
+{
+  "name": "peap",
+  "version": "2.0.0",
+  "description": "A poc implementation of Phoenix Elixir Angular Postgres and few other things.",
+  "scripts": {
+    "test-e2e": "bin/run_e2e_tests.sh",
+    "test": "bin/run_tests.sh",
+    "start": "mix phoenix.server",
+    "install": "bin/install"
+  },
+  "author": "Adam Keating",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

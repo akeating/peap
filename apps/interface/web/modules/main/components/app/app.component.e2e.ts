@@ -9,7 +9,7 @@ describe('AppComponent', () => {
 
   it('should have a title', () => {
     let subject = browser.getTitle();
-    let result  = 'Hello Interface!';
+    let result  = 'Hello PeapDemo!';
     expect(subject).toEqual(result);
   });
 

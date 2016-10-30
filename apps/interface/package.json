@@ -7,15 +7,14 @@
   },
   "scripts": {
     "test-client-unit": "bin/run_client_unit_tests.sh",
-    "test-server": "mix test",
-    "test-e2e": "bin/run_e2e_tests.sh",
-    "test": "bin/run_all_tests.sh",
+    "test": "mix test && npm run test-client-unit",
     "clean": "rm -rf priv/static/*",
     "copy": "cp web/static/root/* priv/static",
     "copy-watch": "node_modules/.bin/cpx \"web/static/*\" priv/static --watch",
     "webpack": "node_modules/.bin/webpack",
     "webpack-watch": "node_modules/.bin/webpack --watch-stdin --progress --colors",
     "webpack-test": "node_modules/.bin/webpack --config webpack-test.config.js",
+    "webpack-test-e2e": "node_modules/.bin/webpack --config webpack-test-e2e.config.js",
     "typings": "typings",
     "postinstall": "typings install",
     "start": "mix phoenix.server"
