@@ -1,11 +1,10 @@
 
 # PEAP - Phoenix Elixir Angular Postgres
-A poc implementation of phoenix with angular2, webpack, graphql, jwt,
+A proof-of-concept implementation of phoenix with angular2, webpack, graphql, jwt,
 typescript, scss, postgres, and a few other things.
 
-Modified from the original implementation to move into an umbrella structure.
-Following the spirit of "phoenix is not your application", the app was refactored
-into two applications; interface and domain.
+Following the spirit of "phoenix is not your application", the original poc was refactored
+into an umbrella structure with two applications; interface and domain.
 
 Requires `elixir`, `node` and `postgres`, e.g.
 ```
@@ -18,7 +17,6 @@ To start the server
 ```
 postgres -D /usr/local/var/postgres/
 npm install
-cd apps/domain && mix ecto.setup
 npm start
 ```
 
@@ -33,8 +31,8 @@ Run the tests
 npm test
 ```
 
-Features
---------
+Notes about the interface app
+-----------------------------
 
 * phoenixframework
 * webpack with watcher
@@ -43,8 +41,8 @@ Features
 * global and encapsulated styles
 * `priv/static` is deleted before each build
 
-Static assets are in `web/static/root`. These are copied over to `priv/static` and changes are watched.
+Static assets are in `web/static`. These are copied over to `priv/static` and changes are watched.
 
-Put everything related to webpack in `web/static/modules`. The webpack bundles are placed in `priv/static/bundles`.
+Put everything related to webpack in `web/modules`. The webpack bundles are placed in `priv/static/bundles`.
 
-WARNING: all files in `priv/static` are deleted with each build. Place everything you need in the appropriate `web/static` directory.
+WARNING: all files in `priv/static` are deleted with each build. Place everything you need copied into `web/static`.
