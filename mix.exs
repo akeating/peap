@@ -5,7 +5,8 @@ defmodule Umb.Mixfile do
     [apps_path: "apps",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     aliases: aliases]
   end
 
   # Dependencies can be Hex packages:
@@ -22,4 +23,9 @@ defmodule Umb.Mixfile do
   defp deps do
     []
   end
+
+  defp aliases do
+    ["s": ["phoenix.server"]]
+  end
+
 end

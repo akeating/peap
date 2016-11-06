@@ -6,7 +6,7 @@
     "test-e2e": "bin/run_e2e_tests.sh",
     "test": "bin/run_tests.sh",
     "start": "mix phoenix.server",
-    "install": "bin/install"
+    "install": "bin/install.sh"
   },
   "author": "Adam Keating",
   "license": "MIT",

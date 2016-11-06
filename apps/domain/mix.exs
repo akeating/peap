@@ -45,10 +45,13 @@ defmodule Domain.Mixfile do
 
   defp aliases do
     seeds = __DIR__ <> "/priv/repo/seeds.exs"
-    ["ecto.setup": ["ecto.create", "ecto.migrate", "run " <> seeds],
-     "ecto.reset": ["ecto.drop", "ecto.setup"],
-     "test": ["ecto.reset --quiet", "ecto.migrate", "test"],
-     "s": ["phoenix.server"]]
+    [
+      "seed": ["run " <> seeds],
+      "ecto.setup": ["ecto.create", "ecto.migrate --quiet", "seed"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "test": ["ecto.reset --quiet", "ecto.migrate", "test"],
+      "s": ["phoenix.server"]
+    ]
   end
 
 end
