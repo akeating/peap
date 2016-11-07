@@ -5,7 +5,7 @@ import { CanActivate,
          ActivatedRouteSnapshot,
          RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { ApiService, LocalStorage } from './services';
+import { ApiService, LocalStorage } from '../services';
 
 @Injectable()
 export class TokenGuard implements CanActivate {

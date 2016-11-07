@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Credentials } from './credentials';
-import { ApiService } from '../../../support/services';
+import { ApiService } from '../../../services';
 
 @Component({
   selector: 'login-form-component',

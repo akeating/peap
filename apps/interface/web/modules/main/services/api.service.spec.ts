@@ -12,7 +12,7 @@ require('zone.js/dist/fake-async-test');
 import {TestBed, inject} from '@angular/core/testing';
 import {BrowserDynamicTestingModule, platformBrowserDynamicTesting} from '@angular/platform-browser-dynamic/testing';
 import { HttpModule } from '@angular/http';
-import { APP_SERVICE_PROVIDERS, ApiService } from './services';
+import { APP_SERVICE_PROVIDERS, ApiService } from '../services';
 
 TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,

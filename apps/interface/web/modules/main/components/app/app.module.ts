@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/login.form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { APP_GUARD_PROVIDERS } from '../../support/guards';
-import { APP_SERVICE_PROVIDERS } from '../../support/services';
+import { APP_GUARD_PROVIDERS } from '../../guards';
+import { APP_SERVICE_PROVIDERS } from '../../services';
 import { routes } from './app.routes';
 
 @NgModule({
