@@ -46,7 +46,6 @@ defmodule Interface.Mixfile do
       {:guardian, "~> 0.13.0"},
       {:comeonin, "~> 2.6"},
       {:plug_graphql, "~> 0.2"},
-      {:exrm, "~> 1.0.8"},
       {:domain, in_umbrella: true}
     ]
   end
