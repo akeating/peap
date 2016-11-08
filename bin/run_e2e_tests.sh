@@ -30,13 +30,16 @@ function stop_server {
 
 set -e
 trap stop_server TERM ERR EXIT
+
+DIR=$(pwd -P)
 export MIX_ENV=teste2e
-echo "Recreating database..."
-node_modules/.bin/webpack --config webpack-test-e2e.config.js
-mix ecto.drop
-mix ecto.create
-mix ecto.migrate --quiet
-mix run priv/repo/seeds.exs > /dev/null # potentially seeds-e2e.exs
+
+# let's get the database in shape
+cd "$DIR/apps/domain"
+mix ecto.reset
+
+# run the e2e tests in the interface
+cd "$DIR/apps/interface"
+npm run webpack-test-e2e
 start_server
-node_modules/protractor/bin/webdriver-manager update
 node_modules/.bin/protractor
