@@ -6,20 +6,7 @@ import { ApiService, DataService, SocketService } from '../../../services';
 @Component({
   selector: 'dashboard-component',
   styles: [ require('./dashboard.component.scss') ],
-  template: `
-    <div class="dashboard page-header">
-      <div class="controls">
-        <div>Welcome, {{userName}} ({{userEmail}})</div>
-        <button class="btn btn-link" (click)="logout()">Logout</button>
-      </div>
-    </div>
-    <div class="main-content">
-      <div class="increment-container">
-        <button class="btn btn-default" (click)="incrementBy(1)">Increment</button>
-        <div class="current-count">{{currentCount}}</div>
-      </div>
-    </div>
-  `
+  template: require('./dashboard.component.html')
 })
 export class DashboardComponent {
   private userName: string;

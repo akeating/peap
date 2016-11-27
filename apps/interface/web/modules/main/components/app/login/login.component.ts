@@ -4,10 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'login-component',
   styles: [ require('./login.component.scss') ],
-  template: `
-    <div class="page-header"></div>
-    <login-form-component (onSuccess)="onSuccessFullLogin()"></login-form-component>
-  `
+  template: require('./login.component.html')
 })
 export class LoginComponent {
 

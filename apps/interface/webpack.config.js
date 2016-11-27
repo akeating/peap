@@ -23,6 +23,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' },
+      { test: /\.html$/, loaders: ['raw-loader'] },
       { test: /\.css$/, loaders: ['style-loader', 'css-loader', 'resolve-url-loader'] },
       { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap'], exclude: [mainPath] },
       { test: /\.scss$/, loaders: ['css-to-string-loader', 'css-loader', 'resolve-url-loader', 'sass-loader?sourceMap'], include: [mainPath] },
