@@ -6,6 +6,7 @@ import { CanActivate,
          RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { ApiService, LocalStorage } from '../services';
+import { User } from '../models/user';
 
 @Injectable()
 export class TokenGuard implements CanActivate {
@@ -16,16 +17,18 @@ export class TokenGuard implements CanActivate {
   canActivate(next:  ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
     let token = this.localStorageService.get('token');
     if (token) {
-      return this.apiService.loginWithToken(token).map(
-        user => this.onSuccessFullLogin(),
-        err => true
-      );
+      return this.apiService.loginWithToken(token)
+      .map((user: User) => {
+        this.onSuccessFullLogin();
+        return false;
+      })
+      .catch(() => Observable.of(true));
     } else {
       return true;
     }
   }
 
-  onSuccessFullLogin(): boolean {
+  onSuccessFullLogin(): void {
     let returnUrl = this.route.snapshot.params['returnUrl'];
     if (returnUrl) {
       let decodedReturnUrl = decodeURIComponent(returnUrl);
@@ -33,7 +36,6 @@ export class TokenGuard implements CanActivate {
     } else {
       this.router.navigateByUrl('/dashboard');
     }
-    return false;
   }
 
 }

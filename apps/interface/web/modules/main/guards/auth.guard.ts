@@ -10,8 +10,8 @@ export class AuthGuard implements CanActivate {
 
   constructor(private router: Router, private dataService: DataService) {}
 
-  canActivate(next:  ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const authStatus = this.dataService.authStatus$.getValue();
+  canActivate(next:  ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    const authStatus: boolean = this.dataService.authStatus$.getValue();
     if (!authStatus) {
       let currentUrl = state.url;
       let returnUrl = encodeURIComponent(currentUrl);

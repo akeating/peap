@@ -12,7 +12,7 @@ export class SocketService {
 
   connect(token: string): Observable<any> {
     return Observable.create(observer => {
-      const options: SocketOptions = { params: { token: token }};
+      const options: SocketOptions = { params: { token }};
       this.socket = new Socket('/socket', options);
       this.socket.onOpen(() => {
         observer.next();
