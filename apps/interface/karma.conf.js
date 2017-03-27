@@ -1,9 +1,12 @@
+var path = require('path');
+var _ = require('lodash');
 var webpackConfig = require('./webpack.config.js');
-webpackConfig.entry = {};
+delete webpackConfig.entry;
+delete webpackConfig.output;
 
 module.exports = function(config) {
   config.set({
-    basePath: '',
+    basePath: path.resolve('web', 'modules'),
     frameworks: ['jasmine', 'chai'],
 
     reporters: ['progress'],
@@ -16,17 +19,21 @@ module.exports = function(config) {
     autoWatchBatchDelay: 300,
 
     files: [
-      './priv/static/bundles/test.js'
+      { pattern: 'test.ts', served: true, included: true, watched: false },
+      { pattern: '**/*.spec.ts', served: true, included: true, watched: false },
     ],
 
     preprocessors: {
-      './priv/static/bundles/test.js': ['webpack', 'sourcemap']
+      'test.ts': ['webpack', 'sourcemap'],
+      '**/*.spec.ts': ['webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
 
     webpackMiddleware: {
-      noInfo: true
-    }
+      stats: 'errors-only'
+    },
+
+    mime: { 'text/x-typescript': ['ts','tsx'] }
   });
 }

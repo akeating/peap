@@ -19,7 +19,7 @@ module.exports = {
     path: buildPath,
     filename: '[name].js'
   },
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   module: {
     loaders: [
       { test: /.(png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/, loader: 'url-loader?limit=100000' },
@@ -36,8 +36,11 @@ module.exports = {
   },
 
   // https://github.com/AngularClass/angular2-webpack-starter/issues/993
-  plugins: [new webpack.ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      __dirname
-    )]
+  plugins: [
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)@angular/,
+      root
+    ),
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
 };

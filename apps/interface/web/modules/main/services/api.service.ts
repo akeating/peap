@@ -26,7 +26,7 @@ export class ApiService {
     });
   }
 
-  public login(email, password): Observable<User> {
+  public login(email: string, password: string): Observable<User> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     let body = { email, password };
@@ -95,11 +95,11 @@ export class ApiService {
     return this.socketService.callApi('graphql', { query: '{whoami { id, name, email }}' });
   }
 
-  sendGraphqlQuery(query): Observable<any> {
+  sendGraphqlQuery(query: string): Observable<any> {
     return this.postJson('/api/graphql', { query: query });
   }
 
-  postJson(url, body): Observable<any> {
+  postJson(url: string, body: any): Observable<any> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'application/json');
@@ -116,7 +116,7 @@ export class ApiService {
   type:2
   url: "http://localhost:4000/api/token"
   */
-  postWithHeaders(url, body, headers): Observable<any> {
+  postWithHeaders(url: string, body: any, headers: Headers): Observable<any> {
     let post_body = JSON.stringify(body);
     return this.http
       .post(url, post_body, { headers })
@@ -129,14 +129,14 @@ export class ApiService {
       });
   }
 
-  getJson(url): Observable<any> {
+  getJson(url: string): Observable<any> {
     let headers = new Headers();
     headers.append('Accept', 'application/json');
     headers.append('Authorization', `Bearer ${this.token}`);
     return this.getWithHeaders(url, headers);
   }
 
-  getWithHeaders(url, headers): Observable<any> {
+  getWithHeaders(url: string, headers: Headers): Observable<any> {
     return this.http
       .get(url, { headers })
       .map(res => res.json())

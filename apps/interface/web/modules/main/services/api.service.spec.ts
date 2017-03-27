@@ -1,16 +1,6 @@
-require('reflect-metadata');
-require('rxjs');
-require('es6-shim');
-require('zone.js/dist/zone');
-require('zone.js/dist/long-stack-trace-zone');
-require('zone.js/dist/proxy');
-require('zone.js/dist/sync-test');
-require('zone.js/dist/jasmine-patch');
-require('zone.js/dist/async-test');
-require('zone.js/dist/fake-async-test');
-
-import {TestBed, inject} from '@angular/core/testing';
-import {BrowserDynamicTestingModule, platformBrowserDynamicTesting} from '@angular/platform-browser-dynamic/testing';
+import { TestBed, inject} from '@angular/core/testing';
+import { BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { HttpModule } from '@angular/http';
 import { APP_SERVICE_PROVIDERS, ApiService } from '../services';
 
@@ -31,7 +21,7 @@ describe('api.service', () => {
       ]
     });
   });
-  it('should logout()', inject([ApiService], (apiService) => {
+  it('should logout()', inject([ApiService], (apiService: ApiService) => {
     expect(apiService.name).toEqual('ApiService');
   }));
 });

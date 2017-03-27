@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Socket, SocketOptions, Channel } from 'phoenix';
+import { Observable, Observer } from 'rxjs';
+import { Socket, Channel } from 'phoenix';
 import { DataService } from './data.service';
 
 @Injectable()
@@ -11,11 +11,11 @@ export class SocketService {
   constructor(private dataService: DataService) {}
 
   connect(token: string): Observable<any> {
-    return Observable.create(observer => {
-      const options: SocketOptions = { params: { token }};
+    return Observable.create((observer: Observer<string>) => {
+      const options = { params: { token }};
       this.socket = new Socket('/socket', options);
       this.socket.onOpen(() => {
-        observer.next();
+        observer.next(null);
       });
       this.socket.onError((err: Error) => {
         this.socket.disconnect();
@@ -26,18 +26,16 @@ export class SocketService {
     .flatMap(() => this.joinChannel('rooms:lobby'));
   }
 
-  joinChannel(channelName): Observable<any> {
+  joinChannel(channelName: string): Observable<any> {
     this.channel = this.socket.channel(channelName, {});
-    let channel: Channel = this.channel;
-    let dataService = this.dataService;
-    return Observable.create(function (observer) {
-      channel.on('new_message', payload => {
-        dataService.receiveAlertMessage(payload.body);
+    return Observable.create((observer: Observer<string>) => {
+      this.channel.on('new_message', payload => {
+        this.dataService.receiveAlertMessage(payload.body);
       });
-      channel.on('current_count', payload => {
-        dataService.setCurrentCount(payload.body);
+      this.channel.on('current_count', payload => {
+        this.dataService.setCurrentCount(payload.body);
       });
-      channel.join()
+      this.channel.join()
         .receive('ok', resp => {
           observer.next(resp);
         })
@@ -47,10 +45,9 @@ export class SocketService {
     });
   }
 
-  callApi(apiName, body): Observable<any> {
-    let channel = this.channel;
-    return Observable.create(function (observer) {
-      channel.push(apiName, { body: body || {}}, 10000)
+  callApi(apiName: string, body: any): Observable<any> {
+    return Observable.create((observer: Observer<string>) => {
+      this.channel.push(apiName, { body: body || {}}, 10000)
         .receive('ok', (msg) => { observer.next(msg.body); })
         .receive('error', resp => { Observable.throw(new Error(resp)); });
     });
