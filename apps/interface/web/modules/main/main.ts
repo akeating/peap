@@ -1,6 +1,6 @@
 require('reflect-metadata');
 require('rxjs');
-require('es6-shim');
+require('core-js');
 require('zone.js/dist/zone');
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';

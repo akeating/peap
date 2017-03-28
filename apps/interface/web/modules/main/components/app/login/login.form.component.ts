@@ -14,7 +14,7 @@ export class LoginFormComponent {
 
   model = new Credentials();
   submitted = false;
-  message = null;
+  message: string = null;
   onSubmit() {
     this.message = null;
     this.submitted = true;
