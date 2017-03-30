@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/Rx';
-import { Subject }    from 'rxjs/Subject';
-import { BehaviorSubject }    from 'rxjs/BehaviorSubject';
+import { Subject, BehaviorSubject, Subscription } from 'rxjs';
+import { PartialObserver } from 'rxjs/Observer';
 
 @Injectable()
 export class DataService {
 
-  public authStatus$ = new BehaviorSubject<boolean>(false);
-  public alertMessage$ = new Subject<string>();
-  public currentCount$ = new Subject<number>();
+  private authStatus$ = new BehaviorSubject<boolean>(false);
+  private alertMessage$ = new Subject<string>();
+  private currentCount$ = new Subject<number>();
 
   constructor() { }
 
@@ -16,11 +16,28 @@ export class DataService {
     this.authStatus$.next(status);
   }
 
+  public getAuthStatus(): boolean {
+    return this.authStatus$.getValue();
+  }
+
+  public subscribeToAuthStatus(observer: PartialObserver<boolean>): Subscription {
+    return this.authStatus$.subscribe(observer);
+  }
+
   public receiveAlertMessage(message: string) {
     this.alertMessage$.next(message);
+  }
+
+  public subscribeToAlertMessages(observer: PartialObserver<string>): Subscription {
+    return this.alertMessage$.subscribe(observer);
   }
 
   public setCurrentCount(count: number) {
     this.currentCount$.next(count);
   }
+
+  public subscribeToCurrentCount(observer: PartialObserver<number>): Subscription {
+    return this.currentCount$.subscribe(observer);
+  }
+
 }

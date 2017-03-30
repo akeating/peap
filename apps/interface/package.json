@@ -30,6 +30,7 @@
     "@angular/router": "4.0.0",
     "@types/core-js": "^0.9.39",
     "@types/jasmine": "^2.5.46",
+    "@types/lodash": "4.14.59",
     "@types/node": "^7.0.12",
     "@types/phoenix": "^0.0.4",
     "@types/webpack-env": "^1.13.0",

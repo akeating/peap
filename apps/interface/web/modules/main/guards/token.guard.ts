@@ -4,32 +4,45 @@ import { CanActivate,
          Router,
          ActivatedRouteSnapshot,
          RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { ApiService, LocalStorage } from '../services';
+import { Observable } from 'rxjs';
+import { ApiService, LocalStorage, DataService } from '../services';
 import { User } from '../types/user';
 
+/*
+  TokenGuard ensures that the user is not logged-in to allow the page, otherwise
+  user is redirected to dashboard or provided redirectUrl.
+*/
 @Injectable()
 export class TokenGuard implements CanActivate {
 
   constructor(private router: Router, private apiService: ApiService,
-    private localStorageService: LocalStorage, private route: ActivatedRoute) {}
+    private localStorageService: LocalStorage, private route: ActivatedRoute,
+    private dataService: DataService ) {}
 
   canActivate(next:  ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-    let token = this.localStorageService.get('token');
-    if (token) {
-      return this.apiService.loginWithToken(token)
-      .map((user: User) => {
-        this.onSuccessFullLogin();
-        return false;
-      })
-      .catch(() => Observable.of(true));
+    const authStatus = this.dataService.getAuthStatus();
+    if (authStatus) {
+      this.redirectToContent(next.queryParams);
+      return false;
     } else {
-      return true;
+      let token = this.localStorageService.get('token');
+      if (token) {
+        return this.apiService.loginWithToken(token).map(
+          (user: User) => {
+            this.redirectToContent(next.queryParams);
+            return false;
+          }
+        ).catch(err => {
+          return Observable.of(true);
+        });
+      } else {
+        return true;
+      }
     }
   }
 
-  onSuccessFullLogin(): void {
-    let returnUrl = this.route.snapshot.params['returnUrl'];
+  redirectToContent(queryParams: any) {
+    let returnUrl = queryParams['returnUrl'];
     if (returnUrl) {
       let decodedReturnUrl = decodeURIComponent(returnUrl);
       this.router.navigateByUrl(decodedReturnUrl);
