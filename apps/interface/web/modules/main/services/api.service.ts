@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
-import { User } from '../models/user';
+import { User } from '../types/user';
 import { SocketService } from './socket.service';
 import { DataService } from './data.service';
-import { LocalStorage } from './localstorage.service';
+import { LocalStorageService } from './localstorage.service';
 
 @Injectable()
 export class ApiService {
@@ -14,14 +14,14 @@ export class ApiService {
   user: User;
 
   constructor(private http: Http, private socketService: SocketService,
-    private dataService: DataService, private localStorageService: LocalStorage) {
+    private dataService: DataService, private localStorageService: LocalStorageService) {
   }
 
   public loginWithToken(aToken: string): Observable<User> {
     this.token = aToken;
     return this.dereferenceToken().catch(err => {
       this.token = null;
-      this.localStorageService.remove('token');
+      this.localStorageService.clearToken();
       return Observable.throw(err);
     });
   }
@@ -32,7 +32,7 @@ export class ApiService {
     let body = { email, password };
     return this.postWithHeaders('/api/token', body, headers).map(res => {
         this.token = res.token;
-        this.localStorageService.set('token', this.token);
+        this.localStorageService.setToken(this.token);
       })
       .catch(err => {
         console.log(err);
@@ -53,7 +53,7 @@ export class ApiService {
   public logout(): void {
     this.token = null;
     this.dataService.setAuthStatus(false);
-    this.localStorageService.remove('token');
+    this.localStorageService.clearToken();
   }
 
   public isLoggedIn(): boolean {

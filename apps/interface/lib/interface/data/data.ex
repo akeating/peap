@@ -62,7 +62,7 @@ defmodule Interface.Data do
 
   def execute(query, root_value) do
     GraphQL.execute(
-      schema,
+      schema(),
       query,
       root_value
     )

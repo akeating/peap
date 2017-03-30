@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../../../models/user';
+import { PartialObserver } from 'rxjs/Observer';
+import { User } from '../../../types/user';
 import { ApiService, DataService, SocketService } from '../../../services';
 
 @Component({
@@ -18,33 +19,40 @@ export class DashboardComponent {
   }
 
   ngOnInit() {
-    if (this.dataService.authStatus$.getValue() === true) {
-      this.setupComponent();
-    } else {
-      this.dataService.authStatus$.subscribe(status => {
-        if (status === true) {
-          this.setupComponent();
-        } else {
-          let currentUrl = this.router.url;
-          let returnUrl = encodeURIComponent(currentUrl);
-          this.router.navigateByUrl(`/login?returnUrl=${returnUrl}`);
-        }
-      });
-    }
-  }
-
-  setupComponent() {
     let user: User = this.apiService.getUser();
     this.userName = user.name;
     this.userEmail = user.email;
-    this.dataService.alertMessage$.subscribe(message => {
-      (<any>window).alert(message);
-    });
 
-    this.dataService.currentCount$.subscribe(count => {
-      this.currentCount = count;
-    });
+    // Handle redirect back to login if no longer authorized
+    const authChangeObserver: PartialObserver<boolean> = { next: (status: boolean) => this.authChange(status) };
+    this.dataService.subscribeToAuthStatus(authChangeObserver);
+
+    // Handle incoming alert messages
+    const alertMessagesObserver: PartialObserver<string> = { next: (message: string) => this.alertMessage(message) };
+    this.dataService.subscribeToAlertMessages(alertMessagesObserver);
+
+    // Handle changes to current count
+    const countObserver: PartialObserver<number> = { next: (count: number) => this.countChange(count) };
+    this.dataService.subscribeToCurrentCount(countObserver);
+
+    // Triggers a call to the server that in effect loads the current state
     this.incrementBy(0);
+  }
+
+  authChange(status: boolean): void {
+    if (!status) {
+      let currentUrl = this.router.url;
+      let returnUrl = encodeURIComponent(currentUrl);
+      this.router.navigateByUrl(`/login?returnUrl=${returnUrl}`);
+    }
+  }
+
+  alertMessage(message: string) {
+    (<any>window).alert(message);
+  }
+
+  countChange(count: number) {
+    this.currentCount = count;
   }
 
   logout() {

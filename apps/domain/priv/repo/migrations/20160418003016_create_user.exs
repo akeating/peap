@@ -6,7 +6,7 @@ defmodule Domain.Repo.Migrations.CreateUser do
       add :name, :string
       add :email, :string
       add :password_hash, :string
-      timestamps
+      timestamps()
     end
 
   end

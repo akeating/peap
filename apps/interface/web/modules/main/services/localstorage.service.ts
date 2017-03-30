@@ -1,7 +1,28 @@
 import { Injectable } from '@angular/core';
 
+const TOKEN_KEY: string = 'token';
+
 @Injectable()
-export class LocalStorage {
+export class LocalStorageService {
+  private localStorage: LocalStorage;
+  constructor() {
+    this.localStorage = new LocalStorage();
+  }
+
+  public setToken(value: string): void {
+    this.localStorage.set(TOKEN_KEY, value);
+  }
+
+  public getToken(): string {
+    return this.localStorage.get(TOKEN_KEY);
+  }
+
+  public clearToken(): void {
+    this.localStorage.remove(TOKEN_KEY);
+  }
+}
+
+class LocalStorage {
   public localStorage: any;
 
   constructor() {
@@ -33,5 +54,5 @@ export class LocalStorage {
 }
 
 export const LOCAL_STORAGE_PROVIDERS: any[] = [
-  { provide: LocalStorage, useClass: LocalStorage }
+  { provide: LocalStorageService, useClass: LocalStorageService }
 ];

@@ -8,7 +8,7 @@ defmodule Interface.Mixfile do
      config_path: "../../config/config.exs",
      deps_path: "../../deps",
      lockfile: "../../mix.lock",
-     elixir: "~> 1.0",
+     elixir: "~> 1.4",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
@@ -22,8 +22,7 @@ defmodule Interface.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Interface, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-     :comeonin, :plug_graphql, :phoenix_pubsub, :domain]]
+     extra_applications: [:logger]]
   end
 
   # Specifies which paths to compile per environment.
@@ -43,8 +42,8 @@ defmodule Interface.Mixfile do
       {:gettext, "~> 0.12"},
       {:cowboy, "~> 1.0"},
       {:joken, "~> 1.3"},
-      {:guardian, "~> 0.13.0"},
-      {:comeonin, "~> 2.6"},
+      {:guardian, "~> 0.14.0"},
+      {:comeonin, "~> 3.0"},
       {:plug_graphql, "~> 0.2"},
       {:domain, in_umbrella: true}
     ]
