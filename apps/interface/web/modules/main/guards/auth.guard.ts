@@ -3,7 +3,7 @@ import { CanActivate,
          Router,
          ActivatedRouteSnapshot,
          RouterStateSnapshot } from '@angular/router';
-import { DataService, ApiService, LocalStorage } from '../services';
+import { DataService, ApiService, LocalStorageService } from '../services';
 import { User } from '../types';
 import { Observable } from 'rxjs';
 
@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router,
     private dataService: DataService,
     private apiService: ApiService,
-    private localStorageService: LocalStorage ) {}
+    private localStorageService: LocalStorageService ) {}
 
   canActivate(next:  ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
     const authStatus = this.dataService.getAuthStatus();
@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
     // User is not authorized, so let' see if there's a stored token we can use
     // to login with
     if (!authStatus) {
-      let token = this.localStorageService.get('token');
+      let token = this.localStorageService.getToken();
       if (token) {
 
         // Yes there's a token, let's try to login

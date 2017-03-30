@@ -5,7 +5,7 @@ import { CanActivate,
          ActivatedRouteSnapshot,
          RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ApiService, LocalStorage, DataService } from '../services';
+import { ApiService, LocalStorageService, DataService } from '../services';
 import { User } from '../types/user';
 
 /*
@@ -16,7 +16,7 @@ import { User } from '../types/user';
 export class TokenGuard implements CanActivate {
 
   constructor(private router: Router, private apiService: ApiService,
-    private localStorageService: LocalStorage, private route: ActivatedRoute,
+    private localStorageService: LocalStorageService, private route: ActivatedRoute,
     private dataService: DataService ) {}
 
   canActivate(next:  ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
@@ -25,7 +25,7 @@ export class TokenGuard implements CanActivate {
       this.redirectToContent(next.queryParams);
       return false;
     } else {
-      let token = this.localStorageService.get('token');
+      let token = this.localStorageService.getToken();
       if (token) {
         return this.apiService.loginWithToken(token).map(
           (user: User) => {
