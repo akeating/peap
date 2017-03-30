@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
-import { User } from '../models/user';
+import { User } from '../types/user';
 import { SocketService } from './socket.service';
 import { DataService } from './data.service';
 import { LocalStorage } from './localstorage.service';

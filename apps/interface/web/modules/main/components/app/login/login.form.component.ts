@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Credentials } from './credentials';
+import { Credentials } from '../../../types';
 import { ApiService } from '../../../services';
 
 @Component({
