@@ -13,11 +13,17 @@ brew install n
 brew install postgres
 ```
 
-To start the server
+Optionally use `yarn` for node package management.
+
+To get setup
 ```
 postgres -D /usr/local/var/postgres/
 npm install
-npm start
+```
+
+Start
+```
+mix phoenix.server
 ```
 
 The seed user is `demo@example.com` and password is `foo`.

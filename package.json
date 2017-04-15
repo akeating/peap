@@ -3,15 +3,15 @@
   "version": "2.0.0",
   "description": "A poc implementation of Phoenix Elixir Angular Postgres and few other things.",
   "scripts": {
-    "test-e2e": "bin/run_e2e_tests.sh",
-    "test": "bin/run_tests.sh",
-    "start": "mix phoenix.server",
-    "install": "bin/install.sh"
+    "clean": "node bin/clean.js",
+    "test-e2e": "node bin/run_e2e.js",
+    "test": "node bin/run_tests.js",
+    "install": "node bin/install.js"
   },
   "author": "Adam Keating",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "sawn": "0.0.3"
   }
 }

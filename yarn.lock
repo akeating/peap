@@ -2,3 +2,6 @@
 # yarn lockfile v1
 
 
+sawn@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/sawn/-/sawn-0.0.3.tgz#b15543cbd24b442eb7e4a5d454030533cd5d9fd1"
