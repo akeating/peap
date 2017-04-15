@@ -6,7 +6,8 @@
     "test": "test"
   },
   "scripts": {
-    "test-client-unit": "bin/run_client_unit_tests.sh",
+    "test-client-unit-watch": "node bin/run_client_unit.js --watch",
+    "test-client-unit": "node bin/run_client_unit.js",
     "test": "mix test && npm run test-client-unit",
     "clean": "rm -rf priv/static/*",
     "copy": "cp web/static/* priv/static",
